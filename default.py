@@ -45,6 +45,7 @@ class Main:
         modeselect.append( __language__(32022) )
         modeselect.append( __language__(32023) )
         modeselect.append( __language__(32024) )
+        modeselect.append( __language__(32025) )
         dialogSelection = xbmcgui.Dialog()
         Edit_Selection = dialogSelection.select( __language__(32007), modeselect ) 
         if Edit_Selection == -1 :
@@ -100,6 +101,8 @@ class Main:
         elif Edit_Selection == 16 :
             dialog = xbmcgui.Dialog()
             self._edit_playcount(dialog.numeric(0, __language__(32005)))
+        elif Edit_Selection == 17 :
+            self._edit_rating(self._set_string()) 
             
     def _set_string( self ):
         xbmc.executebuiltin('Skin.Reset(Value)')
@@ -157,6 +160,9 @@ class Main:
         
     def _edit_top250( self,top250 ):
         xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "top250": %s, "movieid":%s }}' % (top250,self.DBID))
+
+    def _edit_rating( self,rating ):
+        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "rating": %s, "movieid":%s }}' % (rating,self.DBID))
         
     def _edit_year( self,year ):
         xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "year": %s, "movieid":%s }}' % (year,self.DBID))
