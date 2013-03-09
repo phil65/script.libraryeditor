@@ -1,9 +1,6 @@
 import sys, time
 import xbmc, xbmcgui, xbmcaddon
-if sys.version_info < (2, 7):
-    import simplejson
-else:
-    import json as simplejson
+import json
 
 __addon__        = xbmcaddon.Addon()
 __addonid__      = __addon__.getAddonInfo('id')
@@ -58,11 +55,17 @@ class Main:
             dialog = xbmcgui.Dialog()
             self._edit_year(dialog.numeric(2013, __language__(32006)))
         elif Edit_Selection == 2 :
-            self._edit_genre(self._set_string())
+            genrestring = self._set_string()
+            genrelist = genrestring.split( ' / ' )
+            self._edit_genre(json.dumps(genrelist))
         elif Edit_Selection == 3 :
-            self._edit_writer(self._set_string())
+            writerstring = self._set_string()
+            writerlist = writerstring.split( ' / ' )
+            self._edit_writer(json.dumps(writerstring))
         elif Edit_Selection == 4 :
-            self._edit_director(self._set_string())
+            directorstring = self._set_string()
+            directorlist = directorstring.split( ' / ' )
+            self._edit_director(json.dumps(directorlist))
         elif Edit_Selection == 5 :
             self._edit_tagline(self._set_string())
         elif Edit_Selection == 6 :
@@ -75,17 +78,25 @@ class Main:
         elif Edit_Selection == 9 :
             self._edit_set(self._set_string())
         elif Edit_Selection == 10 :
-            self._edit_tag(self._set_string()) 
+            tagstring = self._set_string()
+            taglist = tagstring.split( ' / ' )
+            self._edit_tag(json.dumps(taglist))
         elif Edit_Selection == 11 :
-            self._edit_country(self._set_string()) 
+            countrystring = self._set_string()
+            countrylist = countrystring.split( ' / ' )
+            self._edit_country(json.dumps(countrylist))
         elif Edit_Selection == 12 :
-            self._edit_studio(self._set_string()) 
+            studiostring = self._set_string()
+            studiolist = studiostring.split( ' / ' )
+            self._edit_studio(json.dumps(studiolist))
         elif Edit_Selection == 13 :
             self._edit_mpaa(self._set_string()) 
         elif Edit_Selection == 14 :
             self._edit_trailer(self._set_string()) 
         elif Edit_Selection == 15 :
-            self._edit_showlink(self._set_string()) 
+            showlinkstring = self._set_string()
+            showlinklist = showlinkstring.split( ' / ' )
+            self._edit_showlink(json.dumps(showlinklist))
         elif Edit_Selection == 16 :
             dialog = xbmcgui.Dialog()
             self._edit_playcount(dialog.numeric(0, __language__(32006)))
@@ -105,25 +116,25 @@ class Main:
         xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "originaltitle": "%s", "movieid":%s }}' % (originaltitle,self.DBID))
         
     def _edit_genre( self,genre ):
-        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "genre": ["%s"], "movieid":%s }}' % (genre,self.DBID))
+        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "genre": %s, "movieid":%s }}' % (genre,self.DBID))
         
     def _edit_writer( self,writer ):
-        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "writer": ["%s"], "movieid":%s }}' % (writer,self.DBID))
+        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "writer": %s, "movieid":%s }}' % (writer,self.DBID))
 
     def _edit_director( self,director ):
-        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "director": ["%s"], "movieid":%s }}' % (director,self.DBID))
+        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "director": %s, "movieid":%s }}' % (director,self.DBID))
         
     def _edit_studio( self,studio ):
-        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "studio": ["%s"], "movieid":%s }}' % (studio,self.DBID))
+        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "studio": %s, "movieid":%s }}' % (studio,self.DBID))
  
     def _edit_showlink( self,showlink ):
-        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "showlink": ["%s"], "movieid":%s }}' % (showlink,self.DBID))
+        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "showlink": %s, "movieid":%s }}' % (showlink,self.DBID))
 
     def _edit_tag( self,tag ):
-        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "tag": ["%s"], "movieid":%s }}' % (tag,self.DBID))
+        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "tag": %s, "movieid":%s }}' % (tag,self.DBID))
         
     def _edit_country( self,country ):
-        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "country": ["%s"], "movieid":%s }}' % (country,self.DBID))
+        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "country": %s, "movieid":%s }}' % (country,self.DBID))
         
     def _edit_mpaa( self,mpaa ):
         xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "mpaa": "%s", "movieid":%s }}' % (mpaa,self.DBID))
