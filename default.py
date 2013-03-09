@@ -61,7 +61,7 @@ class Main:
         elif Edit_Selection == 3 :
             writerstring = self._set_string()
             writerlist = writerstring.split( ' / ' )
-            self._edit_writer(json.dumps(writerstring))
+            self._edit_writer(json.dumps(writerlist))
         elif Edit_Selection == 4 :
             directorstring = self._set_string()
             directorlist = directorstring.split( ' / ' )
@@ -103,6 +103,7 @@ class Main:
             
     def _set_string( self ):
         xbmc.executebuiltin('Skin.Reset(Value)')
+     #   xbmc.executebuiltin('Skin.SetString(Value)')
         xbmc.executebuiltin('Skin.SetString(Value)')
         time.sleep(1)
         while ((not xbmc.abortRequested) and (xbmc.getCondVisibility('Window.IsActive(virtualkeyboard)'))):
