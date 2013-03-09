@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
-	<string id="32006">Enter Value for IMDB Top250 Ranking</string>
+	<string id="32004">Enter Value for Year</string>
+	<string id="32005">Enter Value for Playcount</string>
+	<string id="32006">Enter Value for IMDB Top250</string>
 	<string id="32007">What do you want to edit?</string>
 	<string id="32008">Original Title</string>
 	<string id="32009">Year</string>

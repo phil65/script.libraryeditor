@@ -53,7 +53,7 @@ class Main:
             self._edit_originaltitle(self._set_string())
         elif Edit_Selection == 1 :
             dialog = xbmcgui.Dialog()
-            self._edit_year(dialog.numeric(2013, __language__(32006)))
+            self._edit_year(dialog.numeric(2013, __language__(32004)))
         elif Edit_Selection == 2 :
             genrestring = self._set_string()
             genrelist = genrestring.split( ' / ' )
@@ -99,7 +99,7 @@ class Main:
             self._edit_showlink(json.dumps(showlinklist))
         elif Edit_Selection == 16 :
             dialog = xbmcgui.Dialog()
-            self._edit_playcount(dialog.numeric(0, __language__(32006)))
+            self._edit_playcount(dialog.numeric(0, __language__(32005)))
             
     def _set_string( self ):
         xbmc.executebuiltin('Skin.Reset(Value)')
