@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
+	<string id="32001">Premiered</string>
 	<string id="32007">What do you want to edit?</string>
 	<string id="32023">Showlink</string>
 </strings>

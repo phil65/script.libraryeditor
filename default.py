@@ -60,7 +60,7 @@ class Main:
             modeselect.append( xbmc.getLocalizedString(20074) )#MPAA
             modeselect.append( xbmc.getLocalizedString(567) )#PlayCount
             modeselect.append( xbmc.getLocalizedString(563) )#Rating
-            modeselect.append( xbmc.getLocalizedString(20416) )#Premiered
+            modeselect.append( xbmc.getLocalizedString(32001) )#Premiered
         elif xbmc.getCondVisibility('Container.Content(musicvideos)'):
             self.TYPE = "MusicVideo"
             modeselect.append( xbmc.getLocalizedString(369) )#title
@@ -72,9 +72,9 @@ class Main:
             modeselect.append( xbmc.getLocalizedString(572) )#Studio
             modeselect.append( xbmc.getLocalizedString(567) )#PlayCount
         #    modeselect.append( xbmc.getLocalizedString(563) )#Rating
-       #     modeselect.append( xbmc.getLocalizedString(563) )#Album
-        #    modeselect.append( xbmc.getLocalizedString(563) )#Artist
-         #   modeselect.append( xbmc.getLocalizedString(563) )#Track
+            modeselect.append( xbmc.getLocalizedString(558) )#Album
+            modeselect.append( xbmc.getLocalizedString(557) )#Artist
+            modeselect.append( xbmc.getLocalizedString(554) )#Track
         elif xbmc.getCondVisibility('Container.Content(episodes)'):
             self.TYPE = "Episode"
             modeselect.append( xbmc.getLocalizedString(369) )#title
@@ -88,100 +88,130 @@ class Main:
             modeselect.append( xbmc.getLocalizedString(20074) )#MPAA
             modeselect.append( xbmc.getLocalizedString(567) )#PlayCount
             modeselect.append( xbmc.getLocalizedString(563) )#Rating
-    #        modeselect.append( xbmc.getLocalizedString(20416) )#FirstAired
+            modeselect.append( xbmc.getLocalizedString(20416) )#FirstAired
     #        modeselect.append( xbmc.getLocalizedString(20416) )#ProductionCode
     #        modeselect.append( xbmc.getLocalizedString(20416) )#Season
     #        modeselect.append( xbmc.getLocalizedString(20416) )#Episode
+    #        modeselect.append( xbmc.getLocalizedString(20416) )#EpisodeGuide
+    #        modeselect.append( xbmc.getLocalizedString(20416) )#imdbnumber
         elif xbmc.getCondVisibility('Container.Content(artists)'):
             self.TYPE = "Artist"
-            modeselect.append( xbmc.getLocalizedString(369) )
+            modeselect.append( xbmc.getLocalizedString(557) )#Artist (String)
+            modeselect.append( xbmc.getLocalizedString(515) )#genre
+            modeselect.append( xbmc.getLocalizedString(21893) )#born
+            modeselect.append( xbmc.getLocalizedString(21894) )#formed
+            modeselect.append( xbmc.getLocalizedString(21821) )#description
+            modeselect.append( xbmc.getLocalizedString(21897) )#died
+            modeselect.append( xbmc.getLocalizedString(21896) )#disbanded
+            modeselect.append( xbmc.getLocalizedString(21898) )#yearsactive
+            modeselect.append( xbmc.getLocalizedString(175) )#Mood
+            modeselect.append( xbmc.getLocalizedString(176) )#Style
+            modeselect.append( xbmc.getLocalizedString(21892) )#Instrument
         elif xbmc.getCondVisibility('Container.Content(albums)'):
             self.TYPE = "Album"
-            modeselect.append( xbmc.getLocalizedString(369) )
+            modeselect.append( xbmc.getLocalizedString(369) )#title
+            modeselect.append( xbmc.getLocalizedString(557) )#Artist (Array)
+            modeselect.append( xbmc.getLocalizedString(345) )#year
+            modeselect.append( xbmc.getLocalizedString(175) )#Mood
+            modeselect.append( xbmc.getLocalizedString(176) )#Style
+            modeselect.append( xbmc.getLocalizedString(515) )#genre
+            modeselect.append( xbmc.getLocalizedString(515) )#theme
+            modeselect.append( xbmc.getLocalizedString(515) )#type
+            modeselect.append( xbmc.getLocalizedString(515) )#albumlabel
+            modeselect.append( xbmc.getLocalizedString(21821) )#description
+            modeselect.append( xbmc.getLocalizedString(563) )#Rating
         elif xbmc.getCondVisibility('Container.Content(songs)'):
             self.TYPE = "Song"
-            modeselect.append( xbmc.getLocalizedString(369) )
+            modeselect.append( xbmc.getLocalizedString(369) )#title
+            modeselect.append( xbmc.getLocalizedString(557) )#Artist (Array)
+            modeselect.append( xbmc.getLocalizedString(557) )#AlbumArtist (Array)
+            modeselect.append( xbmc.getLocalizedString(557) )#Album
+            modeselect.append( xbmc.getLocalizedString(515) )#genre
+            modeselect.append( xbmc.getLocalizedString(345) )#year
+            modeselect.append( xbmc.getLocalizedString(563) )#Rating
+            modeselect.append( xbmc.getLocalizedString(563) )#Comment
+            modeselect.append( xbmc.getLocalizedString(563) )#Disc
+            modeselect.append( xbmc.getLocalizedString(563) )#Track
+
+
+
             
         dialogSelection = xbmcgui.Dialog()
         Edit_Selection = dialogSelection.select( __language__(32007), modeselect ) 
         if Edit_Selection == -1 :
             return
-            #title
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(369) :
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(369) :         #Title
             self._edit_label(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Title'))),self.TYPE,"title")
-            #OriginalTitle
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20376) :
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20376) :         #OriginalTitle
             self._edit_label(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.OriginalTitle'))),self.TYPE,"originaltitle")
-            #year
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(345) :
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(345) :         #Year
             dialog = xbmcgui.Dialog()
             self._edit_label(dialog.numeric(2013, xbmc.getLocalizedString(16028)),self.TYPE,"year")
-            #genre
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(515) :
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(515) :         #Genre
             genrestring = self._set_string(xbmc.getInfoLabel('ListItem.Genre'))
             genrelist = genrestring.split( ' / ' )
             self._edit_label(json.dumps(genrelist),self.TYPE,"genre")
-            #Writer
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20417) :
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20417) :         #Writer
             writerstring = self._set_string(xbmc.getInfoLabel('ListItem.Writer'))
             writerlist = writerstring.split( ' / ' )
             self._edit_label(json.dumps(writerlist),self.TYPE,"writer")
-            #Director
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20339) :
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20339) :         #Director
             directorstring = self._set_string(xbmc.getInfoLabel('ListItem.Director'))
             directorlist = directorstring.split( ' / ' )
             self._edit_label(json.dumps(directorlist),self.TYPE,"director")
-            #tagline
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(202) :
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(202) :         #Tagline
             self._edit_label(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Tagline'))),self.TYPE,"tagline")
-            #plot
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(207) :
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(207) :         #Plot
             self._edit_label(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Plot'))),self.TYPE,"plot")
-            #PlotOutline
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(203) :
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(203) :         #PlotOutlne
             self._edit_label(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.PlotOutline'))),self.TYPE,"plotoutline")
-            #Top250
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(13409) :
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(13409) :         #Top250
             dialog = xbmcgui.Dialog()
             self._edit_label(dialog.numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"top250")
-            #Set
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20457) :
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20457) :         #Set
             self._edit_label(json.dumps(self._set_string("")),self.TYPE,"set")
-            #Tag
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20459) :
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20459) :         #Tag
             tagstring = self._set_string("")
             taglist = tagstring.split( ' / ' )
             self._edit_label(json.dumps(taglist),self.TYPE,"tag")
-            #Country
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(21875) :
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(21875) :         #Country
             countrystring = self._set_string(xbmc.getInfoLabel('ListItem.Country'))
             countrylist = countrystring.split( ' / ' )
             self._edit_label(json.dumps(countrylist),self.TYPE,"country")
-            #Studio
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(572) :
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(572) :         #Studio
             studiostring = self._set_string(xbmc.getInfoLabel('ListItem.Studio'))
             studiolist = studiostring.split( ' / ' )
             self._edit_label(json.dumps(studiolist),self.TYPE,"studio")
-            #MPAA
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20074) :
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20074) :         #Mpaa
             self._edit_label(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Mpaa'))),self.TYPE,"mpaa")
-            #Trailer
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20410) :
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20410) :         #Trailer
             self._edit_label(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Trailer'))),self.TYPE,"trailer")
-            #Showlink
-        elif modeselect[Edit_Selection] == __language__(32023) :
+        elif modeselect[Edit_Selection] == __language__(32023) :            #Showlink
             showlinkstring = self._set_string("")
             showlinklist = showlinkstring.split( ' / ' )
             self._edit_label(json.dumps(showlinklist),self.TYPE,"showlink")
-            #PlayCount
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(567) :
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(567) :            #PlayCount
             dialog = xbmcgui.Dialog()
             self._edit_label(dialog.numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"playcount")
-            #Rating
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(563) :
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(563) :            #Rating
             self._edit_label(self._set_string(xbmc.getInfoLabel('ListItem.Rating')),self.TYPE,"rating")
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20416) :
-            self._edit_label(self._set_string(xbmc.getInfoLabel('ListItem.Premiered')),self.TYPE,"premiered")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(32001) :             #Premiered
+            self._edit_label(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Premiered'))),self.TYPE,"premiered")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(557) :             #Artist
+            artiststring = self._set_string("")
+            artistlist = artiststring.split( ' / ' )
+            self._edit_label(json.dumps(artistlist),self.TYPE,"artist")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(558) :             #Album
+            self._edit_label(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Album'))),self.TYPE,"album")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(554) :             #TrackNumber (needs checking)
+            self._edit_label(self._set_string(xbmc.getInfoLabel('ListItem.TrackNumber')),self.TYPE,"track")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20416) :             #firstaired (needs checking)
+            self._edit_label(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Premiered'))),self.TYPE,"firstaired")
+            
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(21893) :             #born
+            self._edit_label(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(Artist_Born)'))),self.TYPE,"born")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(21893) :             #formed
+            self._edit_label(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(Artist_Formed)'))),self.TYPE,"formed")
         self._select_dialog()
             
     def _set_string( self,preset ):
@@ -196,8 +226,11 @@ class Main:
         return xbmc.getInfoLabel('Skin.String(Value)')
                     
     def _edit_label( self,genre,type,label ):
-        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.Set%sDetails", "params": { "%s": %s, "%sid":%s }}' % (type,label,genre,type.lower(),self.DBID))
-        
+        if ((type == "Song") or (type == "Album") or (type == "Artist")):
+            xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "AudioLibrary.Set%sDetails", "params": { "%s": %s, "%sid":%s }}' % (type,label,genre,type.lower(),self.DBID))
+        else:
+            xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.Set%sDetails", "params": { "%s": %s, "%sid":%s }}' % (type,label,genre,type.lower(),self.DBID))
+                
 if ( __name__ == "__main__" ):
     Main()
 log('finished')
