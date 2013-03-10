@@ -30,76 +30,68 @@ class Main:
         modeselect= []  
         if xbmc.getCondVisibility('Container.Content(movies)'):
             self.TYPE = "Movie"
-            modeselect.append( xbmc.getLocalizedString(369) )
-            modeselect.append( xbmc.getLocalizedString(20376) )
-            modeselect.append( xbmc.getLocalizedString(345) )
-            modeselect.append( xbmc.getLocalizedString(515) )
-            modeselect.append( xbmc.getLocalizedString(20417) )
-            modeselect.append( xbmc.getLocalizedString(20339) )
-            modeselect.append( xbmc.getLocalizedString(202) )
-            modeselect.append( xbmc.getLocalizedString(207) )
-            modeselect.append( xbmc.getLocalizedString(203) )
-            modeselect.append( xbmc.getLocalizedString(13409) )
-            modeselect.append( xbmc.getLocalizedString(20457) )
-            modeselect.append( xbmc.getLocalizedString(20459) )
-            modeselect.append( xbmc.getLocalizedString(21875) )
-            modeselect.append( xbmc.getLocalizedString(572) )
-            modeselect.append( xbmc.getLocalizedString(20074) )
-            modeselect.append( xbmc.getLocalizedString(20410) )
-            modeselect.append( __language__(32023) )
-            modeselect.append( xbmc.getLocalizedString(567) )
-            modeselect.append( xbmc.getLocalizedString(563) )
+            modeselect.append( xbmc.getLocalizedString(369) )#title
+            modeselect.append( xbmc.getLocalizedString(20376) )#originaltitle
+            modeselect.append( xbmc.getLocalizedString(345) )#year
+            modeselect.append( xbmc.getLocalizedString(515) )#genre
+            modeselect.append( xbmc.getLocalizedString(20417) )#writer
+            modeselect.append( xbmc.getLocalizedString(20339) )#director
+            modeselect.append( xbmc.getLocalizedString(202) )#Tagline
+            modeselect.append( xbmc.getLocalizedString(207) )#Plot
+            modeselect.append( xbmc.getLocalizedString(203) )#PlotOutline
+            modeselect.append( xbmc.getLocalizedString(13409) )# top250
+            modeselect.append( xbmc.getLocalizedString(20457) )#set
+            modeselect.append( xbmc.getLocalizedString(20459) )#tag
+            modeselect.append( xbmc.getLocalizedString(21875) )#Country
+            modeselect.append( xbmc.getLocalizedString(572) )#Studio
+            modeselect.append( xbmc.getLocalizedString(20074) )#MPAA
+            modeselect.append( xbmc.getLocalizedString(20410) )#trailer
+            modeselect.append( __language__(32023) )           #showlink
+            modeselect.append( xbmc.getLocalizedString(567) ) #PlayCount
+            modeselect.append( xbmc.getLocalizedString(563) ) #Rating
         elif xbmc.getCondVisibility('Container.Content(tvshows)'):
             self.TYPE = "TVShow"
-            modeselect.append( xbmc.getLocalizedString(369) )
-            modeselect.append( xbmc.getLocalizedString(20376) )
-            modeselect.append( xbmc.getLocalizedString(345) )
-            modeselect.append( xbmc.getLocalizedString(515) )
-            modeselect.append( xbmc.getLocalizedString(20417) )
-            modeselect.append( xbmc.getLocalizedString(20339) )
-            modeselect.append( xbmc.getLocalizedString(207) )
-            modeselect.append( xbmc.getLocalizedString(203) )
-            modeselect.append( xbmc.getLocalizedString(20457) )
-            modeselect.append( xbmc.getLocalizedString(20459) )
-            modeselect.append( xbmc.getLocalizedString(21875) )
-            modeselect.append( xbmc.getLocalizedString(572) )
-            modeselect.append( xbmc.getLocalizedString(20074) )
-            modeselect.append( xbmc.getLocalizedString(567) )
-            modeselect.append( xbmc.getLocalizedString(563) )
+            modeselect.append( xbmc.getLocalizedString(369) )#title
+            modeselect.append( xbmc.getLocalizedString(20376) )#originaltitle
+            modeselect.append( xbmc.getLocalizedString(515) )#genre
+            modeselect.append( xbmc.getLocalizedString(207) )#Plot
+            modeselect.append( xbmc.getLocalizedString(20459) )#tag
+            modeselect.append( xbmc.getLocalizedString(572) )#Studio
+            modeselect.append( xbmc.getLocalizedString(20074) )#MPAA
+            modeselect.append( xbmc.getLocalizedString(567) )#PlayCount
+            modeselect.append( xbmc.getLocalizedString(563) )#Rating
+            modeselect.append( xbmc.getLocalizedString(20416) )#Premiered
         elif xbmc.getCondVisibility('Container.Content(musicvideos)'):
             self.TYPE = "MusicVideo"
-            modeselect.append( xbmc.getLocalizedString(369) )
-            modeselect.append( xbmc.getLocalizedString(20376) )
-            modeselect.append( xbmc.getLocalizedString(345) )
-            modeselect.append( xbmc.getLocalizedString(515) )
-            modeselect.append( xbmc.getLocalizedString(20417) )
-            modeselect.append( xbmc.getLocalizedString(20339) )
-            modeselect.append( xbmc.getLocalizedString(207) )
-            modeselect.append( xbmc.getLocalizedString(203) )
-            modeselect.append( xbmc.getLocalizedString(20457) )
-            modeselect.append( xbmc.getLocalizedString(20459) )
-            modeselect.append( xbmc.getLocalizedString(21875) )
-            modeselect.append( xbmc.getLocalizedString(572) )
-            modeselect.append( xbmc.getLocalizedString(20074) )
-            modeselect.append( xbmc.getLocalizedString(567) )
-            modeselect.append( xbmc.getLocalizedString(563) )
+            modeselect.append( xbmc.getLocalizedString(369) )#title
+            modeselect.append( xbmc.getLocalizedString(345) )#year
+            modeselect.append( xbmc.getLocalizedString(515) )#genre
+            modeselect.append( xbmc.getLocalizedString(20339) )#director
+            modeselect.append( xbmc.getLocalizedString(207) )#Plot
+            modeselect.append( xbmc.getLocalizedString(20459) )#tag
+            modeselect.append( xbmc.getLocalizedString(572) )#Studio
+            modeselect.append( xbmc.getLocalizedString(567) )#PlayCount
+        #    modeselect.append( xbmc.getLocalizedString(563) )#Rating
+       #     modeselect.append( xbmc.getLocalizedString(563) )#Album
+        #    modeselect.append( xbmc.getLocalizedString(563) )#Artist
+         #   modeselect.append( xbmc.getLocalizedString(563) )#Track
         elif xbmc.getCondVisibility('Container.Content(episodes)'):
             self.TYPE = "Episode"
-            modeselect.append( xbmc.getLocalizedString(369) )
-            modeselect.append( xbmc.getLocalizedString(20376) )
-            modeselect.append( xbmc.getLocalizedString(345) )
-            modeselect.append( xbmc.getLocalizedString(515) )
-            modeselect.append( xbmc.getLocalizedString(20417) )
-            modeselect.append( xbmc.getLocalizedString(20339) )
-            modeselect.append( xbmc.getLocalizedString(207) )
-            modeselect.append( xbmc.getLocalizedString(203) )
-            modeselect.append( xbmc.getLocalizedString(20457) )
-            modeselect.append( xbmc.getLocalizedString(20459) )
-            modeselect.append( xbmc.getLocalizedString(21875) )
-            modeselect.append( xbmc.getLocalizedString(572) )
-            modeselect.append( xbmc.getLocalizedString(20074) )
-            modeselect.append( xbmc.getLocalizedString(567) )
-            modeselect.append( xbmc.getLocalizedString(563) )
+            modeselect.append( xbmc.getLocalizedString(369) )#title
+            modeselect.append( xbmc.getLocalizedString(20376) )#originaltitle
+            modeselect.append( xbmc.getLocalizedString(515) )#genre
+            modeselect.append( xbmc.getLocalizedString(207) )#Plot
+            modeselect.append( xbmc.getLocalizedString(20339) )#director
+            modeselect.append( xbmc.getLocalizedString(20417) )#writer
+            modeselect.append( xbmc.getLocalizedString(20459) )#tag
+            modeselect.append( xbmc.getLocalizedString(572) )#Studio
+            modeselect.append( xbmc.getLocalizedString(20074) )#MPAA
+            modeselect.append( xbmc.getLocalizedString(567) )#PlayCount
+            modeselect.append( xbmc.getLocalizedString(563) )#Rating
+    #        modeselect.append( xbmc.getLocalizedString(20416) )#FirstAired
+    #        modeselect.append( xbmc.getLocalizedString(20416) )#ProductionCode
+    #        modeselect.append( xbmc.getLocalizedString(20416) )#Season
+    #        modeselect.append( xbmc.getLocalizedString(20416) )#Episode
         elif xbmc.getCondVisibility('Container.Content(artists)'):
             self.TYPE = "Artist"
             modeselect.append( xbmc.getLocalizedString(369) )
@@ -188,6 +180,8 @@ class Main:
             #Rating
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(563) :
             self._edit_label(self._set_string(xbmc.getInfoLabel('ListItem.Rating')),self.TYPE,"rating")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20416) :
+            self._edit_label(self._set_string(xbmc.getInfoLabel('ListItem.Premiered')),self.TYPE,"premiered")
         self._select_dialog()
             
     def _set_string( self,preset ):
