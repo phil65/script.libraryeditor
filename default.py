@@ -51,66 +51,68 @@ class Main:
         if Edit_Selection == -1 :
             return
         elif Edit_Selection == 0 :
-            self._edit_originaltitle(self._set_string())
+            self._edit_originaltitle(self._set_string(xbmc.getInfoLabel('ListItem.Title')))
         elif Edit_Selection == 1 :
             dialog = xbmcgui.Dialog()
             self._edit_year(dialog.numeric(2013, __language__(32004)))
         elif Edit_Selection == 2 :
-            genrestring = self._set_string()
+            genrestring = self._set_string(xbmc.getInfoLabel('ListItem.Genre'))
             genrelist = genrestring.split( ' / ' )
             self._edit_genre(json.dumps(genrelist))
         elif Edit_Selection == 3 :
-            writerstring = self._set_string()
+            writerstring = self._set_string(xbmc.getInfoLabel('ListItem.Writer'))
             writerlist = writerstring.split( ' / ' )
             self._edit_writer(json.dumps(writerlist))
         elif Edit_Selection == 4 :
-            directorstring = self._set_string()
+            directorstring = self._set_string(xbmc.getInfoLabel('ListItem.Director'))
             directorlist = directorstring.split( ' / ' )
             self._edit_director(json.dumps(directorlist))
         elif Edit_Selection == 5 :
-            self._edit_tagline(self._set_string())
+            self._edit_tagline(self._set_string(xbmc.getInfoLabel('ListItem.Tagline')))
         elif Edit_Selection == 6 :
-            self._edit_plot(self._set_string())
+            self._edit_plot(self._set_string(xbmc.getInfoLabel('ListItem.Plot')))
         elif Edit_Selection == 7 :
-            self._edit_plotoutline(self._set_string()) 
+            self._edit_plotoutline(self._set_string(xbmc.getInfoLabel('ListItem.PlotOutline'))) 
         elif Edit_Selection == 8 :
             dialog = xbmcgui.Dialog()
             self._edit_top250(dialog.numeric(0, __language__(32006))) 
         elif Edit_Selection == 9 :
-            self._edit_set(self._set_string())
+            self._edit_set(self._set_string(""))
         elif Edit_Selection == 10 :
-            tagstring = self._set_string()
+            tagstring = self._set_string("")
             taglist = tagstring.split( ' / ' )
             self._edit_tag(json.dumps(taglist))
         elif Edit_Selection == 11 :
-            countrystring = self._set_string()
+            countrystring = self._set_string(xbmc.getInfoLabel('ListItem.Country'))
             countrylist = countrystring.split( ' / ' )
             self._edit_country(json.dumps(countrylist))
         elif Edit_Selection == 12 :
-            studiostring = self._set_string()
+            studiostring = self._set_string(xbmc.getInfoLabel('ListItem.Studio'))
             studiolist = studiostring.split( ' / ' )
             self._edit_studio(json.dumps(studiolist))
         elif Edit_Selection == 13 :
-            self._edit_mpaa(self._set_string()) 
+            self._edit_mpaa(self._set_string(xbmc.getInfoLabel('ListItem.Mpaa'))) 
         elif Edit_Selection == 14 :
-            self._edit_trailer(self._set_string()) 
+            self._edit_trailer(self._set_string(xbmc.getInfoLabel('ListItem.Trailer'))) 
         elif Edit_Selection == 15 :
-            showlinkstring = self._set_string()
+            showlinkstring = self._set_string("")
             showlinklist = showlinkstring.split( ' / ' )
             self._edit_showlink(json.dumps(showlinklist))
         elif Edit_Selection == 16 :
             dialog = xbmcgui.Dialog()
             self._edit_playcount(dialog.numeric(0, __language__(32005)))
         elif Edit_Selection == 17 :
-            self._edit_rating(self._set_string()) 
+            self._edit_rating(self._set_string(xbmc.getInfoLabel('ListItem.Rating'))) 
             
-    def _set_string( self ):
+    def _set_string( self,preset ):
         xbmc.executebuiltin('Skin.Reset(Value)')
-     #   xbmc.executebuiltin('Skin.SetString(Value)')
+        xbmc.executebuiltin('Skin.SetString(Value,%s)' % preset)
         xbmc.executebuiltin('Skin.SetString(Value)')
-        time.sleep(1)
+        while (not xbmc.getCondVisibility('Window.IsActive(virtualkeyboard)')):
+            xbmc.sleep(100)
         while ((not xbmc.abortRequested) and (xbmc.getCondVisibility('Window.IsActive(virtualkeyboard)'))):
-            time.sleep(1)
+            xbmc.sleep(100)
+        xbmc.sleep(1000)
         return xbmc.getInfoLabel('Skin.String(Value)')
             
     def _edit_title( self,title ):
