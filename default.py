@@ -125,7 +125,7 @@ class Main:
         return xbmc.getInfoLabel('Skin.String(Value)')
                     
     def _edit_label( self,genre,type,label ):
-        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.Set%sDetails", "params": { "%s": %s, "movieid":%s }}' % (type,label,genre,self.DBID))
+        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.Set%sDetails", "params": { "%s": %s, "%sid":%s }}' % (type,label,genre,type.lower(),self.DBID))
         
 if ( __name__ == "__main__" ):
     Main()
