@@ -18,7 +18,7 @@ class Main:
         log('version %s started' % __addonversion__ )
         self._parse_argv()
         self._select_dialog()
-
+            
     def _parse_argv( self ):
         try:
             params = dict( arg.split( '=' ) for arg in sys.argv[ 1 ].split( '&' ) )
@@ -27,6 +27,14 @@ class Main:
         self.DBID = int(params.get( 'DBID', False ))
         
     def _select_dialog( self ):
+        if xbmc.getCondVisibility('Container.Content(movies)'):
+            self.TYPE = "Movie"
+        elif xbmc.getCondVisibility('Container.Content(tvshows)'):
+            self.TYPE = "TVShow"
+        elif xbmc.getCondVisibility('Container.Content(musicvideos)'):
+            self.TYPE = "MusicVideo"
+        elif xbmc.getCondVisibility('Container.Content(episodes)'):
+            self.TYPE = "Episode"
         modeselect= []  
         modeselect.append( __language__(32008) )
         modeselect.append( __language__(32009) )
@@ -51,22 +59,22 @@ class Main:
         if Edit_Selection == -1 :
             return
         elif Edit_Selection == 0 :
-            self._edit_originaltitle(self._set_string(xbmc.getInfoLabel('ListItem.Title')))
+            self._edit_originaltitle(self._set_string(xbmc.getInfoLabel('ListItem.OriginalTitle')))
         elif Edit_Selection == 1 :
             dialog = xbmcgui.Dialog()
             self._edit_year(dialog.numeric(2013, __language__(32004)))
         elif Edit_Selection == 2 :
             genrestring = self._set_string(xbmc.getInfoLabel('ListItem.Genre'))
             genrelist = genrestring.split( ' / ' )
-            self._edit_genre(json.dumps(genrelist))
+            self._edit_label(json.dumps(genrelist),self.TYPE,"genre")
         elif Edit_Selection == 3 :
             writerstring = self._set_string(xbmc.getInfoLabel('ListItem.Writer'))
             writerlist = writerstring.split( ' / ' )
-            self._edit_writer(json.dumps(writerlist))
+            self._edit_label(json.dumps(writerlist),self.TYPE,"writer")
         elif Edit_Selection == 4 :
             directorstring = self._set_string(xbmc.getInfoLabel('ListItem.Director'))
             directorlist = directorstring.split( ' / ' )
-            self._edit_director(json.dumps(directorlist))
+            self._edit_label(json.dumps(directorlist),self.TYPE,"director")
         elif Edit_Selection == 5 :
             self._edit_tagline(self._set_string(xbmc.getInfoLabel('ListItem.Tagline')))
         elif Edit_Selection == 6 :
@@ -81,15 +89,15 @@ class Main:
         elif Edit_Selection == 10 :
             tagstring = self._set_string("")
             taglist = tagstring.split( ' / ' )
-            self._edit_tag(json.dumps(taglist))
+            self._edit_label(json.dumps(taglist),self.TYPE,"tag")
         elif Edit_Selection == 11 :
             countrystring = self._set_string(xbmc.getInfoLabel('ListItem.Country'))
             countrylist = countrystring.split( ' / ' )
-            self._edit_country(json.dumps(countrylist))
+            self._edit_label(json.dumps(countrylist),self.TYPE,"country")
         elif Edit_Selection == 12 :
             studiostring = self._set_string(xbmc.getInfoLabel('ListItem.Studio'))
             studiolist = studiostring.split( ' / ' )
-            self._edit_studio(json.dumps(studiolist))
+            self._edit_label(json.dumps(studiolist),self.TYPE,"studio")
         elif Edit_Selection == 13 :
             self._edit_mpaa(self._set_string(xbmc.getInfoLabel('ListItem.Mpaa'))) 
         elif Edit_Selection == 14 :
@@ -97,12 +105,13 @@ class Main:
         elif Edit_Selection == 15 :
             showlinkstring = self._set_string("")
             showlinklist = showlinkstring.split( ' / ' )
-            self._edit_showlink(json.dumps(showlinklist))
+            self._edit_label(json.dumps(showlinklist),self.TYPE,"showlink")
         elif Edit_Selection == 16 :
             dialog = xbmcgui.Dialog()
             self._edit_playcount(dialog.numeric(0, __language__(32005)))
         elif Edit_Selection == 17 :
-            self._edit_rating(self._set_string(xbmc.getInfoLabel('ListItem.Rating'))) 
+            self._edit_rating(self._set_string(xbmc.getInfoLabel('ListItem.Rating')))
+        self._select_dialog()
             
     def _set_string( self,preset ):
         xbmc.executebuiltin('Skin.Reset(Value)')
@@ -121,27 +130,9 @@ class Main:
     def _edit_originaltitle( self,originaltitle ):
         xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "originaltitle": "%s", "movieid":%s }}' % (originaltitle,self.DBID))
         
-    def _edit_genre( self,genre ):
-        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "genre": %s, "movieid":%s }}' % (genre,self.DBID))
-        
-    def _edit_writer( self,writer ):
-        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "writer": %s, "movieid":%s }}' % (writer,self.DBID))
-
-    def _edit_director( self,director ):
-        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "director": %s, "movieid":%s }}' % (director,self.DBID))
-        
-    def _edit_studio( self,studio ):
-        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "studio": %s, "movieid":%s }}' % (studio,self.DBID))
- 
-    def _edit_showlink( self,showlink ):
-        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "showlink": %s, "movieid":%s }}' % (showlink,self.DBID))
-
-    def _edit_tag( self,tag ):
-        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "tag": %s, "movieid":%s }}' % (tag,self.DBID))
-        
-    def _edit_country( self,country ):
-        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "country": %s, "movieid":%s }}' % (country,self.DBID))
-        
+    def _edit_label( self,genre,type,label ):
+        xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.Set%sDetails", "params": { "%s": %s, "movieid":%s }}' % (type,label,genre,self.DBID))
+                                
     def _edit_mpaa( self,mpaa ):
         xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.SetMovieDetails", "params": { "mpaa": "%s", "movieid":%s }}' % (mpaa,self.DBID))
         
