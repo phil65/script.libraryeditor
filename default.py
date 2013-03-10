@@ -215,16 +215,13 @@ class Main:
         self._select_dialog()
             
     def _set_string( self,preset ):
-        xbmc.executebuiltin('Skin.Reset(Value)')
-        xbmc.executebuiltin('Skin.SetString(Value,%s)' % preset)
-        xbmc.executebuiltin('Skin.SetString(Value)')
-        while (not xbmc.getCondVisibility('Window.IsActive(virtualkeyboard)')):
-            xbmc.sleep(100)
-        while ((not xbmc.abortRequested) and (xbmc.getCondVisibility('Window.IsActive(virtualkeyboard)'))):
-            xbmc.sleep(100)
-        xbmc.sleep(1000)
-        return xbmc.getInfoLabel('Skin.String(Value)')
-                    
+        keyboard = xbmc.Keyboard(preset)
+        keyboard.doModal()
+        if (keyboard.isConfirmed()):
+            return keyboard.getText()
+        else:
+            return ""
+                         
     def _edit_label( self,genre,type,label ):
         if ((type == "Song") or (type == "Album") or (type == "Artist")):
             xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "AudioLibrary.Set%sDetails", "params": { "%s": %s, "%sid":%s }}' % (type,label,genre,type.lower(),self.DBID))
