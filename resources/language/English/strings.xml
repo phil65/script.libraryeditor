@@ -1,26 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
-	<string id="32003">Title</string>
-	<string id="32004">Enter Value for Year</string>
-	<string id="32005">Enter Value for Playcount</string>
-	<string id="32006">Enter Value for IMDB Top250</string>
 	<string id="32007">What do you want to edit?</string>
-	<string id="32008">Original Title</string>
-	<string id="32009">Year</string>
-	<string id="32010">Genre</string>
-	<string id="32011">Writer</string>
-	<string id="32012">Director</string>
-	<string id="32013">Tagline</string>
-	<string id="32014">Plot</string>
-	<string id="32015">Plot Outline</string>
-	<string id="32016">IMDB Top250</string>
-	<string id="32017">Set</string>
-	<string id="32018">Tag</string>
-	<string id="32019">Country</string>
-	<string id="32020">Studio</string>
-	<string id="32021">MPAA</string>
-	<string id="32022">Trailer</string>
 	<string id="32023">Showlink</string>
-	<string id="32024">Playcount</string>
-	<string id="32025">Rating</string>
 </strings>
