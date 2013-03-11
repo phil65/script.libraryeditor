@@ -90,8 +90,8 @@ class Main:
             modeselect.append( xbmc.getLocalizedString(563) )#Rating
             modeselect.append( xbmc.getLocalizedString(20416) )#FirstAired
     #        modeselect.append( xbmc.getLocalizedString(20416) )#ProductionCode
-    #        modeselect.append( xbmc.getLocalizedString(20416) )#Season
-    #        modeselect.append( xbmc.getLocalizedString(20416) )#Episode
+            modeselect.append( xbmc.getLocalizedString(20373) )#Season
+            modeselect.append( xbmc.getLocalizedString(20359) )#Episode
     #        modeselect.append( xbmc.getLocalizedString(20416) )#EpisodeGuide
     #        modeselect.append( xbmc.getLocalizedString(20416) )#imdbnumber
         elif xbmc.getCondVisibility('Container.Content(artists)'):
@@ -146,7 +146,13 @@ class Main:
             self._edit_label(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.OriginalTitle'))),self.TYPE,"originaltitle")
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(345) :         #Year
             dialog = xbmcgui.Dialog()
-            self._edit_label(dialog.numeric(2013, xbmc.getLocalizedString(16028)),self.TYPE,"year")
+            self._edit_label(dialog.numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"year")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20359) :         #Episode
+            dialog = xbmcgui.Dialog()
+            self._edit_label(dialog.numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"episode")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20373) :         #Season
+            dialog = xbmcgui.Dialog()
+            self._edit_label(dialog.numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"season")
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(515) :         #Genre
             genrestring = self._set_string(xbmc.getInfoLabel('ListItem.Genre'))
             genrelist = genrestring.split( ' / ' )
