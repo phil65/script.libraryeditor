@@ -60,7 +60,7 @@ class Main:
             modeselect.append( xbmc.getLocalizedString(20074) )#MPAA
             modeselect.append( xbmc.getLocalizedString(567) )#PlayCount
             modeselect.append( xbmc.getLocalizedString(563) )#Rating
-            modeselect.append( xbmc.getLocalizedString(32001) )#Premiered
+            modeselect.append( __language__(32001) )#Premiered
         elif xbmc.getCondVisibility('Container.Content(musicvideos)'):
             self.TYPE = "MusicVideo"
             modeselect.append( xbmc.getLocalizedString(369) )#title
@@ -145,14 +145,11 @@ class Main:
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20376) :         #OriginalTitle
             self._edit_label(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.OriginalTitle'))),self.TYPE,"originaltitle")
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(345) :         #Year
-            dialog = xbmcgui.Dialog()
-            self._edit_label(dialog.numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"year")
+            self._edit_label(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"year")
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20359) :         #Episode
-            dialog = xbmcgui.Dialog()
-            self._edit_label(dialog.numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"episode")
+            self._edit_label(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"episode")
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20373) :         #Season
-            dialog = xbmcgui.Dialog()
-            self._edit_label(dialog.numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"season")
+            self._edit_label(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"season")
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(515) :         #Genre
             genrestring = self._set_string(xbmc.getInfoLabel('ListItem.Genre'))
             genrelist = genrestring.split( ' / ' )
@@ -172,8 +169,7 @@ class Main:
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(203) :         #PlotOutlne
             self._edit_label(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.PlotOutline'))),self.TYPE,"plotoutline")
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(13409) :         #Top250
-            dialog = xbmcgui.Dialog()
-            self._edit_label(dialog.numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"top250")
+            self._edit_label(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"top250")
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20457) :         #Set
             self._edit_label(json.dumps(self._set_string("")),self.TYPE,"set")
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20459) :         #Tag
@@ -197,11 +193,10 @@ class Main:
             showlinklist = showlinkstring.split( ' / ' )
             self._edit_label(json.dumps(showlinklist),self.TYPE,"showlink")
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(567) :            #PlayCount
-            dialog = xbmcgui.Dialog()
-            self._edit_label(dialog.numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"playcount")
+            self._edit_label(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"playcount")
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(563) :            #Rating
             self._edit_label(self._set_string(xbmc.getInfoLabel('ListItem.Rating')),self.TYPE,"rating")
-        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(32001) :             #Premiered
+        elif modeselect[Edit_Selection] == __language__(32001) :             #Premiered
             self._edit_label(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Premiered'))),self.TYPE,"premiered")
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(557) :             #Artist
             artiststring = self._set_string("")
