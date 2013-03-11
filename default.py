@@ -115,9 +115,9 @@ class Main:
             modeselect.append( xbmc.getLocalizedString(175) )#Mood
             modeselect.append( xbmc.getLocalizedString(176) )#Style
             modeselect.append( xbmc.getLocalizedString(515) )#genre
-            modeselect.append( xbmc.getLocalizedString(515) )#theme
-            modeselect.append( xbmc.getLocalizedString(515) )#type
-            modeselect.append( xbmc.getLocalizedString(515) )#albumlabel
+            modeselect.append( xbmc.getLocalizedString(21895) )#themes
+         #   modeselect.append( xbmc.getLocalizedString(515) )#type
+          #  modeselect.append( xbmc.getLocalizedString(515) )#albumlabel
             modeselect.append( xbmc.getLocalizedString(21821) )#description
             modeselect.append( xbmc.getLocalizedString(563) )#Rating
         elif xbmc.getCondVisibility('Container.Content(songs)'):
@@ -129,9 +129,9 @@ class Main:
             modeselect.append( xbmc.getLocalizedString(515) )#genre
             modeselect.append( xbmc.getLocalizedString(345) )#year
             modeselect.append( xbmc.getLocalizedString(563) )#Rating
-            modeselect.append( xbmc.getLocalizedString(563) )#Comment
-            modeselect.append( xbmc.getLocalizedString(563) )#Disc
-            modeselect.append( xbmc.getLocalizedString(563) )#Track
+            modeselect.append( xbmc.getLocalizedString(569) )#Comment
+            modeselect.append( xbmc.getLocalizedString(427) )#Disc
+            modeselect.append( xbmc.getLocalizedString(554) )#Track
           
         dialogSelection = xbmcgui.Dialog()
         Edit_Selection = dialogSelection.select( __language__(32007), modeselect ) 
@@ -147,6 +147,10 @@ class Main:
             self._edit_db_tag(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"episode")
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20373) :         #Season
             self._edit_db_tag(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"season")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(554) :         #track
+            self._edit_db_tag(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"track")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(427) :         #disc
+            self._edit_db_tag(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"disc")
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(515) :         #Genre
             genrestring = self._set_string(xbmc.getInfoLabel('ListItem.Genre'))
             self._edit_db_tag(json.dumps(genrestring.split( ' / ' )),self.TYPE,"genre")
@@ -201,6 +205,28 @@ class Main:
             self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(Artist_Born)'))),self.TYPE,"born")
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(21893) :             #formed
             self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(Artist_Formed)'))),self.TYPE,"formed")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(21821) :             #description
+            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(Artist_Formed)'))),self.TYPE,"description")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(21897) :             #died
+            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(Artist_Died)'))),self.TYPE,"died")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(21896) :             #disbanded
+            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(Artist_Disbanded)'))),self.TYPE,"disbanded")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(21898) :             #yearsactive
+            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(Artist_YearsActive)'))),self.TYPE,"yearsactive")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(569) :             #comment
+            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(Artist_YearsActive)'))),self.TYPE,"comment")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(175) :             #mood
+            moodstring = self._set_string("")
+            self._edit_db_tag(json.dumps(moodstring.split( ' / ' )),self.TYPE,"mood")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(176) :             #style
+            stylestring = self._set_string("")
+            self._edit_db_tag(json.dumps(stylestring.split( ' / ' )),self.TYPE,"style")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(176) :             #Instruments
+            instrumentstring = self._set_string("")
+            self._edit_db_tag(json.dumps(instrumentstring.split( ' / ' )),self.TYPE,"instrument")
+        elif modeselect[Edit_Selection] == xbmc.getLocalizedString(21895) :             #themes
+            themestring = self._set_string("")
+            self._edit_db_tag(json.dumps(themestring.split( ' / ' )),self.TYPE,"theme")
         self._select_dialog()
             
     def _set_string( self,preset ):
