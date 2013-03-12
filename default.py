@@ -46,7 +46,6 @@ class Main:
             modeselect.append( xbmc.getLocalizedString(572) )#Studio
             modeselect.append( xbmc.getLocalizedString(20074) )#MPAA
             modeselect.append( xbmc.getLocalizedString(20410) )#trailer
-            modeselect.append( __language__(32023) )           #showlink
             modeselect.append( xbmc.getLocalizedString(567) ) #PlayCount
             modeselect.append( xbmc.getLocalizedString(563) ) #Rating
         elif xbmc.getCondVisibility('Container.Content(tvshows)'):
@@ -183,9 +182,6 @@ class Main:
             self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Mpaa'))),self.TYPE,"mpaa")
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(20410) :         #Trailer
             self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Trailer'))),self.TYPE,"trailer")
-        elif modeselect[Edit_Selection] == __language__(32023) :            #Showlink
-            showlinkstring = self._set_string("")
-            self._edit_db_tag(json.dumps(showlinkstring.split( ' / ' )),self.TYPE,"showlink")
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(567) :            #PlayCount
             self._edit_db_tag(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"playcount")
         elif modeselect[Edit_Selection] == xbmc.getLocalizedString(563) :            #Rating
