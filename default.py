@@ -31,72 +31,72 @@ class Main:
         self.identifierlist= []
         if xbmc.getCondVisibility('Container.Content(movies)'):
             self.TYPE = "Movie"
-            self._AddToList( xbmc.getLocalizedString(369),"title" )#title
-            self._AddToList( xbmc.getLocalizedString(20376),"originaltitle" )#originaltitle
-            self._AddToList( xbmc.getLocalizedString(345),"year" )#year
-            self._AddToList( xbmc.getLocalizedString(515),"genre" )#genre
-            self._AddToList( xbmc.getLocalizedString(20417),"writer" )#writer
-            self._AddToList( xbmc.getLocalizedString(20339),"director" )#director
-            self._AddToList( xbmc.getLocalizedString(202),"Tagline" )#Tagline
-            self._AddToList( xbmc.getLocalizedString(207),"Plot" )#Plot
-            self._AddToList( xbmc.getLocalizedString(203),"PlotOutline" )#PlotOutline
-            self._AddToList( xbmc.getLocalizedString(13409),"top250" )# top250
-            self._AddToList( xbmc.getLocalizedString(20457),"set" )#set
-            self._AddToList( xbmc.getLocalizedString(20459),"tag" )#tag
-            self._AddToList( xbmc.getLocalizedString(21875),"Country" )#Country
-            self._AddToList( xbmc.getLocalizedString(572),"Studio" )#Studio
-            self._AddToList( xbmc.getLocalizedString(20074),"MPAA" )#MPAA
-            self._AddToList( xbmc.getLocalizedString(20410),"trailer" )#trailer
-            self._AddToList( xbmc.getLocalizedString(567),"PlayCount" ) #PlayCount
-            self._AddToList( xbmc.getLocalizedString(563),"Rating" ) #Rating
+            self._AddToList( xbmc.getLocalizedString(369),"title" )
+            self._AddToList( xbmc.getLocalizedString(20376),"originaltitle" )
+            self._AddToList( xbmc.getLocalizedString(345),"year" )
+            self._AddToList( xbmc.getLocalizedString(515),"genre" )
+            self._AddToList( xbmc.getLocalizedString(20417),"writer" )
+            self._AddToList( xbmc.getLocalizedString(20339),"director" )
+            self._AddToList( xbmc.getLocalizedString(202),"tagline" )
+            self._AddToList( xbmc.getLocalizedString(207),"plot" )
+            self._AddToList( xbmc.getLocalizedString(203),"plotoutline" )
+            self._AddToList( xbmc.getLocalizedString(13409),"top250" )
+            self._AddToList( xbmc.getLocalizedString(20457),"set" )
+            self._AddToList( xbmc.getLocalizedString(20459),"tag" )
+            self._AddToList( xbmc.getLocalizedString(21875),"country" )
+            self._AddToList( xbmc.getLocalizedString(572),"studio" )
+            self._AddToList( xbmc.getLocalizedString(20074),"mpaa" )
+            self._AddToList( xbmc.getLocalizedString(20410),"trailer" )
+            self._AddToList( xbmc.getLocalizedString(567),"playcount" ) 
+            self._AddToList( xbmc.getLocalizedString(563),"rating" )
         elif xbmc.getCondVisibility('Container.Content(tvshows)'):
             self.TYPE = "TVShow"
-            self._AddToList( xbmc.getLocalizedString(369),"title" )#title
-            self._AddToList( xbmc.getLocalizedString(20376),"originaltitle" )#originaltitle
-            self._AddToList( xbmc.getLocalizedString(515),"genre" )#genre
-            self._AddToList( xbmc.getLocalizedString(207),"Plot" )#Plot
-            self._AddToList( xbmc.getLocalizedString(20459),"tag" )#tag
-            self._AddToList( xbmc.getLocalizedString(572),"Studio" )#Studio
-            self._AddToList( xbmc.getLocalizedString(20074),"MPAA" )#MPAA
-            self._AddToList( xbmc.getLocalizedString(567),"PlayCount" )#PlayCount
-            self._AddToList( xbmc.getLocalizedString(563),"Rating" )#Rating
-            self._AddToList( __language__(32001),"Premiered" )#Premiered
+            self._AddToList( xbmc.getLocalizedString(369),"title" )
+            self._AddToList( xbmc.getLocalizedString(20376),"originaltitle" )
+            self._AddToList( xbmc.getLocalizedString(515),"genre" )
+            self._AddToList( xbmc.getLocalizedString(207),"plot" )
+            self._AddToList( xbmc.getLocalizedString(20459),"tag" )
+            self._AddToList( xbmc.getLocalizedString(572),"studio" )
+            self._AddToList( xbmc.getLocalizedString(20074),"mpaa" )
+            self._AddToList( xbmc.getLocalizedString(567),"playcount" )
+            self._AddToList( xbmc.getLocalizedString(563),"rating" )
+            self._AddToList( __language__(32001),"premiered" )
         elif xbmc.getCondVisibility('Container.Content(musicvideos)'):
             self.TYPE = "MusicVideo"
-            self._AddToList( xbmc.getLocalizedString(369),"title" )#title
-            self._AddToList( xbmc.getLocalizedString(345),"year" )#year
-            self._AddToList( xbmc.getLocalizedString(515),"genre" )#genre
-            self._AddToList( xbmc.getLocalizedString(20339),"director" )#director
-            self._AddToList( xbmc.getLocalizedString(207),"Plot" )#Plot
-            self._AddToList( xbmc.getLocalizedString(20459),"tag" )#tag
-            self._AddToList( xbmc.getLocalizedString(572),"Studio" )#Studio
-            self._AddToList( xbmc.getLocalizedString(567),"PlayCount" )#PlayCount
-        #    self._AddToList( xbmc.getLocalizedString(563),"title" )#Rating
-            self._AddToList( xbmc.getLocalizedString(558),"Album" )#Album
-            self._AddToList( xbmc.getLocalizedString(557),"Artist" )#Artist
-            self._AddToList( xbmc.getLocalizedString(554),"Track" )#Track
+            self._AddToList( xbmc.getLocalizedString(369),"title" )
+            self._AddToList( xbmc.getLocalizedString(345),"year" )
+            self._AddToList( xbmc.getLocalizedString(515),"genre" )
+            self._AddToList( xbmc.getLocalizedString(20339),"director" )
+            self._AddToList( xbmc.getLocalizedString(207),"plot" )
+            self._AddToList( xbmc.getLocalizedString(20459),"tag" )
+            self._AddToList( xbmc.getLocalizedString(572),"studio" )
+            self._AddToList( xbmc.getLocalizedString(567),"playcount" )
+        #    self._AddToList( xbmc.getLocalizedString(563),"title" )
+            self._AddToList( xbmc.getLocalizedString(558),"album" )
+            self._AddToList( xbmc.getLocalizedString(557),"arr_artist" )
+            self._AddToList( xbmc.getLocalizedString(554),"track" )
         elif xbmc.getCondVisibility('Container.Content(episodes)'):
             self.TYPE = "Episode"
-            self._AddToList( xbmc.getLocalizedString(369),"title" )#title
-            self._AddToList( xbmc.getLocalizedString(20376),"originaltitle" )#originaltitle
-            self._AddToList( xbmc.getLocalizedString(515),"genre" )#genre
-            self._AddToList( xbmc.getLocalizedString(207),"Plot" )#Plot
-            self._AddToList( xbmc.getLocalizedString(20339),"director" )#director
-            self._AddToList( xbmc.getLocalizedString(20417),"writer" )#writer
-            self._AddToList( xbmc.getLocalizedString(20459),"tag" )#tag
-            self._AddToList( xbmc.getLocalizedString(572),"Studio" )#Studio
-            self._AddToList( xbmc.getLocalizedString(20074),"MPAA" )#MPAA
-            self._AddToList( xbmc.getLocalizedString(567),"PlayCount" )#PlayCount
-            self._AddToList( xbmc.getLocalizedString(563),"Rating" )#Rating
-            self._AddToList( xbmc.getLocalizedString(20416),"FirstAired" )#FirstAired
-    #        self._AddToList( xbmc.getLocalizedString(20416),"title" )#ProductionCode
-            self._AddToList( xbmc.getLocalizedString(20373),"Season" )#Season
-            self._AddToList( xbmc.getLocalizedString(20359),"Episode" )#Episode
-    #        self._AddToList( xbmc.getLocalizedString(20416),"title" )#EpisodeGuide
-    #        self._AddToList( xbmc.getLocalizedString(20416),"title" )#imdbnumber
+            self._AddToList( xbmc.getLocalizedString(369),"title" )
+            self._AddToList( xbmc.getLocalizedString(20376),"originaltitle" )
+            self._AddToList( xbmc.getLocalizedString(515),"genre" )
+            self._AddToList( xbmc.getLocalizedString(207),"plot" )
+            self._AddToList( xbmc.getLocalizedString(20339),"director" )
+            self._AddToList( xbmc.getLocalizedString(20417),"writer" )
+            self._AddToList( xbmc.getLocalizedString(20459),"tag" )
+            self._AddToList( xbmc.getLocalizedString(572),"studio" )
+            self._AddToList( xbmc.getLocalizedString(20074),"mpaa" )
+            self._AddToList( xbmc.getLocalizedString(567),"playcount" )
+            self._AddToList( xbmc.getLocalizedString(563),"rating" )
+            self._AddToList( xbmc.getLocalizedString(20416),"firstaired" )
+    #        self._AddToList( xbmc.getLocalizedString(20416),"title" )
+            self._AddToList( xbmc.getLocalizedString(20373),"season" )
+            self._AddToList( xbmc.getLocalizedString(20359),"episode" )
+    #        self._AddToList( xbmc.getLocalizedString(20416),"title" )
+    #        self._AddToList( xbmc.getLocalizedString(20416),"title" )
         elif xbmc.getCondVisibility('Container.Content(artists)'):
             self.TYPE = "Artist"
-            self._AddToList( xbmc.getLocalizedString(557),"Artist" )#Artist (String)
+            self._AddToList( xbmc.getLocalizedString(557),"str_artist" )#artist (String)
             self._AddToList( xbmc.getLocalizedString(515),"genre" )#genre
             self._AddToList( xbmc.getLocalizedString(21893),"born" )#born
             self._AddToList( xbmc.getLocalizedString(21894),"formed" )#formed
@@ -104,124 +104,126 @@ class Main:
             self._AddToList( xbmc.getLocalizedString(21897),"died" )#died
             self._AddToList( xbmc.getLocalizedString(21896),"disbanded" )#disbanded
             self._AddToList( xbmc.getLocalizedString(21898),"yearsactive" )#yearsactive
-            self._AddToList( xbmc.getLocalizedString(175),"Mood" )#Mood
-            self._AddToList( xbmc.getLocalizedString(176),"Style" )#Style
-            self._AddToList( xbmc.getLocalizedString(21892),"Instrument" )#Instrument
+            self._AddToList( xbmc.getLocalizedString(175),"mood" )#mood
+            self._AddToList( xbmc.getLocalizedString(176),"style" )#style
+            self._AddToList( xbmc.getLocalizedString(21892),"instruments" )#Instrument
         elif xbmc.getCondVisibility('Container.Content(albums)'):
             self.TYPE = "Album"
             self._AddToList( xbmc.getLocalizedString(369),"title" )#title
-            self._AddToList( xbmc.getLocalizedString(557),"Artist" )#Artist (Array)
+            self._AddToList( xbmc.getLocalizedString(557),"arr_artist" )#artist (Array)
             self._AddToList( xbmc.getLocalizedString(345),"year" )#year
-            self._AddToList( xbmc.getLocalizedString(175),"Mood" )#Mood
-            self._AddToList( xbmc.getLocalizedString(176),"Style" )#Style
+            self._AddToList( xbmc.getLocalizedString(175),"mood" )#mood
+            self._AddToList( xbmc.getLocalizedString(176),"style" )#style
             self._AddToList( xbmc.getLocalizedString(515),"genre" )#genre
             self._AddToList( xbmc.getLocalizedString(21895),"themes" )#themes
          #   self._AddToList( xbmc.getLocalizedString(515),"type" )#type
           #  self._AddToList( xbmc.getLocalizedString(515),"albumlabel" )#albumlabel
             self._AddToList( xbmc.getLocalizedString(21821),"description" )#description
-            self._AddToList( xbmc.getLocalizedString(563),"Rating" )#Rating
+            self._AddToList( xbmc.getLocalizedString(563),"rating" )#rating
         elif xbmc.getCondVisibility('Container.Content(songs)'):
             self.TYPE = "Song"
             self._AddToList( xbmc.getLocalizedString(369),"title" )#title
-            self._AddToList( xbmc.getLocalizedString(557),"Artist" )#Artist (Array)
-            self._AddToList( xbmc.getLocalizedString(557),"AlbumArtist" )#AlbumArtist (Array)
-            self._AddToList( xbmc.getLocalizedString(557),"Album" )#Album
+            self._AddToList( xbmc.getLocalizedString(557),"arr_artist" )#artist (Array)
+            self._AddToList( xbmc.getLocalizedString(557),"artist" )#artist (Array)
+            self._AddToList( xbmc.getLocalizedString(558),"album" )#Album
             self._AddToList( xbmc.getLocalizedString(515),"genre" )#genre
             self._AddToList( xbmc.getLocalizedString(345),"year" )#year
-            self._AddToList( xbmc.getLocalizedString(563),"Rating" )#Rating
-            self._AddToList( xbmc.getLocalizedString(569),"Comment" )#Comment
-            self._AddToList( xbmc.getLocalizedString(427),"Disc" )#Disc
+            self._AddToList( xbmc.getLocalizedString(563),"rating" )#rating
+            self._AddToList( xbmc.getLocalizedString(569),"comment" )#comment
+            self._AddToList( xbmc.getLocalizedString(427),"disc" )#disc
             self._AddToList( xbmc.getLocalizedString(554),"Track" )#Track
           
         dialogSelection = xbmcgui.Dialog()
         Edit_Selection = dialogSelection.select( __language__(32007), self.modeselect ) 
         if Edit_Selection == -1 :
             return
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(369) :         #Title
+        elif self.identifierlist[Edit_Selection] == "title" : 
             self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Title'))),self.TYPE,"title")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(20376) :         #OriginalTitle
+        elif self.identifierlist[Edit_Selection] == "originaltitle" :
             self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.OriginalTitle'))),self.TYPE,"originaltitle")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(345) :         #Year
+        elif self.identifierlist[Edit_Selection] == "year" :
             self._edit_db_tag(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"year")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(20359) :         #Episode
+        elif self.identifierlist[Edit_Selection] == "episode" :
             self._edit_db_tag(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"episode")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(20373) :         #Season
+        elif self.identifierlist[Edit_Selection] == "season" :
             self._edit_db_tag(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"season")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(554) :         #track
+        elif self.identifierlist[Edit_Selection] == "track" :
             self._edit_db_tag(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"track")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(427) :         #disc
+        elif self.identifierlist[Edit_Selection] == "disc" :
             self._edit_db_tag(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"disc")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(515) :         #Genre
+        elif self.identifierlist[Edit_Selection] == "genre" :
             genrestring = self._set_string(xbmc.getInfoLabel('ListItem.Genre'))
             self._edit_db_tag(json.dumps(genrestring.split( ' / ' )),self.TYPE,"genre")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(20417) :         #Writer
+        elif self.identifierlist[Edit_Selection] == "writer" :
             writerstring = self._set_string(xbmc.getInfoLabel('ListItem.Writer'))
             self._edit_db_tag(json.dumps(writerstring.split( ' / ' )),self.TYPE,"writer")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(20339) :         #Director
+        elif self.identifierlist[Edit_Selection] == "director" :
             directorstring = self._set_string(xbmc.getInfoLabel('ListItem.Director'))
             self._edit_db_tag(json.dumps(directorstring.split( ' / ' )),self.TYPE,"director")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(202) :         #Tagline
+        elif self.identifierlist[Edit_Selection] == "tagline" :
             self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Tagline'))),self.TYPE,"tagline")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(207) :         #Plot
+        elif self.identifierlist[Edit_Selection] == "plot" :
             self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Plot'))),self.TYPE,"plot")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(203) :         #PlotOutlne
+        elif self.identifierlist[Edit_Selection] == "plotoutline" :
             self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.PlotOutline'))),self.TYPE,"plotoutline")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(13409) :         #Top250
+        elif self.identifierlist[Edit_Selection] == "top250" :
             self._edit_db_tag(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"top250")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(20457) :         #Set
+        elif self.identifierlist[Edit_Selection] == "set" :
             self._edit_db_tag(json.dumps(self._set_string("")),self.TYPE,"set")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(20459) :         #Tag
+        elif self.identifierlist[Edit_Selection] == "tag" :
             tagstring = self._set_string("") 
             self._edit_db_tag(json.dumps(tagstring.split( ' / ' )),self.TYPE,"tag")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(21875) :         #Country
+        elif self.identifierlist[Edit_Selection] == "country" :
             countrystring = self._set_string(xbmc.getInfoLabel('ListItem.Country'))
             self._edit_db_tag(json.dumps(countrystring.split( ' / ' )),self.TYPE,"country")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(572) :         #Studio
+        elif self.identifierlist[Edit_Selection] == "studio" :
             studiostring = self._set_string(xbmc.getInfoLabel('ListItem.Studio'))
             self._edit_db_tag(json.dumps(studiostring.split( ' / ' )),self.TYPE,"studio")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(20074) :         #Mpaa
+        elif self.identifierlist[Edit_Selection] == "mpaa" :
             self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Mpaa'))),self.TYPE,"mpaa")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(20410) :         #Trailer
+        elif self.identifierlist[Edit_Selection] == "trailer" :
             self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Trailer'))),self.TYPE,"trailer")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(567) :            #PlayCount
+        elif self.identifierlist[Edit_Selection] == "playcount" :
             self._edit_db_tag(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"playcount")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(563) :            #Rating
-            self._edit_db_tag(self._set_string(xbmc.getInfoLabel('ListItem.Rating')),self.TYPE,"rating")
-        elif self.modeselect[Edit_Selection] == __language__(32001) :             #Premiered
+        elif self.identifierlist[Edit_Selection] == "rating" :
+            self._edit_db_tag(self._set_string(xbmc.getInfoLabel('ListItem.rating')),self.TYPE,"rating")
+        elif self.identifierlist[Edit_Selection] == "premiered" :
             self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Premiered'))),self.TYPE,"premiered")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(557) :             #Artist
+        elif self.identifierlist[Edit_Selection] == "arr_artist" :
             artiststring = self._set_string("")
             self._edit_db_tag(json.dumps(artiststring.split( ' / ' )),self.TYPE,"artist")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(558) :             #Album
+        elif self.identifierlist[Edit_Selection] == "str_artist" :
+            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Artist'))),self.TYPE,"artist")
+        elif self.identifierlist[Edit_Selection] == "album" :
             self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Album'))),self.TYPE,"album")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(554) :             #TrackNumber (needs checking)
+        elif self.identifierlist[Edit_Selection] == "tracknumber" :             #TrackNumber (needs checking)
             self._edit_db_tag(self._set_string(xbmc.getInfoLabel('ListItem.TrackNumber')),self.TYPE,"track")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(20416) :             #firstaired (needs checking)
+        elif self.identifierlist[Edit_Selection] == "firstaired" :             #firstaired (needs checking)
             self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Premiered'))),self.TYPE,"firstaired")       
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(21893) :             #born
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(Artist_Born)'))),self.TYPE,"born")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(21893) :             #formed
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(Artist_Formed)'))),self.TYPE,"formed")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(21821) :             #description
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(Artist_Formed)'))),self.TYPE,"description")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(21897) :             #died
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(Artist_Died)'))),self.TYPE,"died")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(21896) :             #disbanded
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(Artist_Disbanded)'))),self.TYPE,"disbanded")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(21898) :             #yearsactive
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(Artist_YearsActive)'))),self.TYPE,"yearsactive")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(569) :             #comment
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(Artist_YearsActive)'))),self.TYPE,"comment")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(175) :             #mood
+        elif self.identifierlist[Edit_Selection] == "born" : 
+            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(artist_Born)'))),self.TYPE,"born")
+        elif self.identifierlist[Edit_Selection] == "formed" :
+            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(artist_Formed)'))),self.TYPE,"formed")
+        elif self.identifierlist[Edit_Selection] == "description" :
+            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(artist_Formed)'))),self.TYPE,"description")
+        elif self.identifierlist[Edit_Selection] == "died" :
+            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(artist_Died)'))),self.TYPE,"died")
+        elif self.identifierlist[Edit_Selection] == "disbanded" :
+            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(artist_Disbanded)'))),self.TYPE,"disbanded")
+        elif self.identifierlist[Edit_Selection] == "yearsactive" :
+            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(artist_YearsActive)'))),self.TYPE,"yearsactive")
+        elif self.identifierlist[Edit_Selection] == "comment" :
+            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(artist_YearsActive)'))),self.TYPE,"comment")
+        elif self.identifierlist[Edit_Selection] == "mood" :
             moodstring = self._set_string("")
             self._edit_db_tag(json.dumps(moodstring.split( ' / ' )),self.TYPE,"mood")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(176) :             #style
+        elif self.identifierlist[Edit_Selection] == "style" :
             stylestring = self._set_string("")
             self._edit_db_tag(json.dumps(stylestring.split( ' / ' )),self.TYPE,"style")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(176) :             #Instruments
+        elif self.identifierlist[Edit_Selection] == "instruments" :
             instrumentstring = self._set_string("")
             self._edit_db_tag(json.dumps(instrumentstring.split( ' / ' )),self.TYPE,"instrument")
-        elif self.modeselect[Edit_Selection] == xbmc.getLocalizedString(21895) :             #themes
+        elif self.identifierlist[Edit_Selection] == "themes" :
             themestring = self._set_string("")
             self._edit_db_tag(json.dumps(themestring.split( ' / ' )),self.TYPE,"theme")
         self._select_dialog()
