@@ -100,7 +100,7 @@ class Main:
             self._AddToList( xbmc.getLocalizedString(515),"genre" )#genre
             self._AddToList( xbmc.getLocalizedString(21893),"born" )#born
             self._AddToList( xbmc.getLocalizedString(21894),"formed" )#formed
-            self._AddToList( xbmc.getLocalizedString(21821),"description" )#description
+            self._AddToList( xbmc.getLocalizedString(21821),"artist_description" )#description
             self._AddToList( xbmc.getLocalizedString(21897),"died" )#died
             self._AddToList( xbmc.getLocalizedString(21896),"disbanded" )#disbanded
             self._AddToList( xbmc.getLocalizedString(21898),"yearsactive" )#yearsactive
@@ -118,7 +118,7 @@ class Main:
             self._AddToList( xbmc.getLocalizedString(21895),"themes" )#themes
          #   self._AddToList( xbmc.getLocalizedString(515),"type" )#type
           #  self._AddToList( xbmc.getLocalizedString(515),"albumlabel" )#albumlabel
-            self._AddToList( xbmc.getLocalizedString(21821),"description" )#description
+            self._AddToList( xbmc.getLocalizedString(21821),"album_description" )#description
             self._AddToList( xbmc.getLocalizedString(563),"rating" )#rating
         elif xbmc.getCondVisibility('Container.Content(songs)'):
             self.TYPE = "Song"
@@ -138,19 +138,19 @@ class Main:
         if Edit_Selection == -1 :
             return
         elif self.identifierlist[Edit_Selection] == "title" : 
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Title'))),self.TYPE,"title")
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.Title'),self.TYPE,"title")
         elif self.identifierlist[Edit_Selection] == "originaltitle" :
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.OriginalTitle'))),self.TYPE,"originaltitle")
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.OriginalTitle'),self.TYPE,"originaltitle")
         elif self.identifierlist[Edit_Selection] == "year" :
-            self._edit_db_tag(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"year")
+            self._edit_db_integer(self.TYPE,"year")
         elif self.identifierlist[Edit_Selection] == "episode" :
-            self._edit_db_tag(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"episode")
+            self._edit_db_integer(self.TYPE,"episode")
         elif self.identifierlist[Edit_Selection] == "season" :
-            self._edit_db_tag(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"season")
+            self._edit_db_integer(self.TYPE,"season")
         elif self.identifierlist[Edit_Selection] == "track" :
-            self._edit_db_tag(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"track")
+            self._edit_db_integer(self.TYPE,"track")
         elif self.identifierlist[Edit_Selection] == "disc" :
-            self._edit_db_tag(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"disc")
+            self._edit_db_integer(self.TYPE,"disc")
         elif self.identifierlist[Edit_Selection] == "genre" :
             genrestring = self._set_string(xbmc.getInfoLabel('ListItem.Genre'))
             self._edit_db_tag(json.dumps(genrestring.split( ' / ' )),self.TYPE,"genre")
@@ -161,15 +161,15 @@ class Main:
             directorstring = self._set_string(xbmc.getInfoLabel('ListItem.Director'))
             self._edit_db_tag(json.dumps(directorstring.split( ' / ' )),self.TYPE,"director")
         elif self.identifierlist[Edit_Selection] == "tagline" :
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Tagline'))),self.TYPE,"tagline")
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.Tagline'),self.TYPE,"tagline")
         elif self.identifierlist[Edit_Selection] == "plot" :
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Plot'))),self.TYPE,"plot")
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.Plot'),self.TYPE,"plot")
         elif self.identifierlist[Edit_Selection] == "plotoutline" :
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.PlotOutline'))),self.TYPE,"plotoutline")
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.PlotOutline'),self.TYPE,"plotoutline")
         elif self.identifierlist[Edit_Selection] == "top250" :
-            self._edit_db_tag(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"top250")
+            self._edit_db_integer(self.TYPE,"top250")
         elif self.identifierlist[Edit_Selection] == "set" :
-            self._edit_db_tag(json.dumps(self._set_string("")),self.TYPE,"set")
+            self._edit_db_string("",self.TYPE,"set")
         elif self.identifierlist[Edit_Selection] == "tag" :
             tagstring = self._set_string("") 
             self._edit_db_tag(json.dumps(tagstring.split( ' / ' )),self.TYPE,"tag")
@@ -180,40 +180,42 @@ class Main:
             studiostring = self._set_string(xbmc.getInfoLabel('ListItem.Studio'))
             self._edit_db_tag(json.dumps(studiostring.split( ' / ' )),self.TYPE,"studio")
         elif self.identifierlist[Edit_Selection] == "mpaa" :
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Mpaa'))),self.TYPE,"mpaa")
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.Mpaa'),self.TYPE,"mpaa")
         elif self.identifierlist[Edit_Selection] == "trailer" :
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Trailer'))),self.TYPE,"trailer")
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.Trailer'),self.TYPE,"trailer")
         elif self.identifierlist[Edit_Selection] == "playcount" :
-            self._edit_db_tag(xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028)),self.TYPE,"playcount")
+            self._edit_db_integer(self.TYPE,"playcount")
         elif self.identifierlist[Edit_Selection] == "rating" :
-            self._edit_db_tag(self._set_string(xbmc.getInfoLabel('ListItem.rating')),self.TYPE,"rating")
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.Rating'),self.TYPE,"rating")
         elif self.identifierlist[Edit_Selection] == "premiered" :
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Premiered'))),self.TYPE,"premiered")
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.Premiered'),self.TYPE,"premiered")
         elif self.identifierlist[Edit_Selection] == "arr_artist" :
             artiststring = self._set_string("")
             self._edit_db_tag(json.dumps(artiststring.split( ' / ' )),self.TYPE,"artist")
         elif self.identifierlist[Edit_Selection] == "str_artist" :
             self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Artist'))),self.TYPE,"artist")
         elif self.identifierlist[Edit_Selection] == "album" :
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Album'))),self.TYPE,"album")
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.Album'),self.TYPE,"album")
         elif self.identifierlist[Edit_Selection] == "tracknumber" :             #TrackNumber (needs checking)
-            self._edit_db_tag(self._set_string(xbmc.getInfoLabel('ListItem.TrackNumber')),self.TYPE,"track")
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.TrackNumber'),self.TYPE,"track")
         elif self.identifierlist[Edit_Selection] == "firstaired" :             #firstaired (needs checking)
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Premiered'))),self.TYPE,"firstaired")       
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.Premiered'),self.TYPE,"firstaired")
         elif self.identifierlist[Edit_Selection] == "born" : 
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(artist_Born)'))),self.TYPE,"born")
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.Property(artist_Born)'),self.TYPE,"born")
         elif self.identifierlist[Edit_Selection] == "formed" :
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(artist_Formed)'))),self.TYPE,"formed")
-        elif self.identifierlist[Edit_Selection] == "description" :
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(artist_Formed)'))),self.TYPE,"description")
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.Property(artist_Formed)'),self.TYPE,"formed")
+        elif self.identifierlist[Edit_Selection] == "artist_description" :
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.Property(Artist_Description)'),self.TYPE,"description")
+        elif self.identifierlist[Edit_Selection] == "album_description" :
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.Property(Album_Description)'),self.TYPE,"description")
         elif self.identifierlist[Edit_Selection] == "died" :
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(artist_Died)'))),self.TYPE,"died")
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.Property(Artist_Died)'),self.TYPE,"died")
         elif self.identifierlist[Edit_Selection] == "disbanded" :
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(artist_Disbanded)'))),self.TYPE,"disbanded")
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.Property(Artist_Disbanded)'),self.TYPE,"disbanded")
         elif self.identifierlist[Edit_Selection] == "yearsactive" :
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(artist_YearsActive)'))),self.TYPE,"yearsactive")
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.Property(Artist_YearsActive)'),self.TYPE,"yearsactive")
         elif self.identifierlist[Edit_Selection] == "comment" :
-            self._edit_db_tag(json.dumps(self._set_string(xbmc.getInfoLabel('ListItem.Property(artist_YearsActive)'))),self.TYPE,"comment")
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.Comment'),self.TYPE,"comment")
         elif self.identifierlist[Edit_Selection] == "mood" :
             moodstring = self._set_string("")
             self._edit_db_tag(json.dumps(moodstring.split( ' / ' )),self.TYPE,"mood")
@@ -245,6 +247,21 @@ class Main:
             xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "AudioLibrary.Set%sDetails", "params": { "%s": %s, "%sid":%s }}' % (type,label,genre,type.lower(),self.DBID))
         else:
             xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.Set%sDetails", "params": { "%s": %s, "%sid":%s }}' % (type,label,genre,type.lower(),self.DBID))
+
+    def _edit_db_integer( self,type,label ):
+        value = xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028))
+        if ((type == "Song") or (type == "Album") or (type == "Artist")):
+            xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "AudioLibrary.Set%sDetails", "params": { "%s": %s, "%sid":%s }}' % (type,label,value,type.lower(),self.DBID))
+        else:
+            xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.Set%sDetails", "params": { "%s": %s, "%sid":%s }}' % (type,label,value,type.lower(),self.DBID))
+
+    def _edit_db_string( self,preset,type,label ):
+        InputLabel = self._set_string(preset)
+        if InputLabel <> "":
+            if ((type == "Song") or (type == "Album") or (type == "Artist")):
+                xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "AudioLibrary.Set%sDetails", "params": { "%s": "%s", "%sid":%s }}' % (type,label,InputLabel,type.lower(),self.DBID))
+            else:
+                xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.Set%sDetails", "params": { "%s": "%s", "%sid":%s }}' % (type,label,InputLabel,type.lower(),self.DBID))
                 
 if ( __name__ == "__main__" ):
     Main()
