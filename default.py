@@ -98,7 +98,7 @@ class Main:
         elif xbmc.getCondVisibility('Container.Content(artists)'):
             self.TYPE = "Artist"
             self._AddToList( xbmc.getLocalizedString(557),"str_artist" )
-            self._AddToList( xbmc.getLocalizedString(515),"genre" )
+            self._AddToList( xbmc.getLocalizedString(515),"artist_genre" )
             self._AddToList( xbmc.getLocalizedString(21893),"born" )
             self._AddToList( xbmc.getLocalizedString(21894),"formed" )
             self._AddToList( xbmc.getLocalizedString(21821),"artist_description" )
@@ -115,7 +115,7 @@ class Main:
             self._AddToList( xbmc.getLocalizedString(345),"year" )
             self._AddToList( xbmc.getLocalizedString(175),"album_mood" )
             self._AddToList( xbmc.getLocalizedString(176),"album_style" )
-            self._AddToList( xbmc.getLocalizedString(515),"genre" )
+            self._AddToList( xbmc.getLocalizedString(515),"album_genre" )
             self._AddToList( xbmc.getLocalizedString(21895),"themes" )
          #   self._AddToList( xbmc.getLocalizedString(515),"type" )
           #  self._AddToList( xbmc.getLocalizedString(515),"albumlabel" )
@@ -155,6 +155,10 @@ class Main:
             self._edit_db_integer(self.TYPE,"disc")
         elif self.identifierlist[Edit_Selection] == "genre" :
             self._edit_db_array(xbmc.getInfoLabel('ListItem.Genre'),self.TYPE,"genre")
+        elif self.identifierlist[Edit_Selection] == "artist_genre" :
+            self._edit_db_array(xbmc.getInfoLabel('ListItem.Property(Artist_Genre)'),self.TYPE,"genre")
+        elif self.identifierlist[Edit_Selection] == "album_genre" :
+            self._edit_db_array(xbmc.getInfoLabel('ListItem.Property(Album_Genre)'),self.TYPE,"genre")
         elif self.identifierlist[Edit_Selection] == "writer" :
             self._edit_db_array(xbmc.getInfoLabel('ListItem.Writer'),self.TYPE,"writer")
         elif self.identifierlist[Edit_Selection] == "director" :
