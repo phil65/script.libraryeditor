@@ -25,6 +25,7 @@ class Main:
         except:
             params = {}
         self.DBID = int(params.get( 'DBID', False ))
+        self.PARAM_TYPE = str(params.get( 'type', "" ))         
         
     def _select_dialog( self ):
         self.modeselect= []
@@ -131,6 +132,9 @@ class Main:
             self._AddToList( xbmc.getLocalizedString(569),"comment" )
             self._AddToList( xbmc.getLocalizedString(427),"disc" )
             self._AddToList( xbmc.getLocalizedString(554),"Track" )
+         #override auto type
+        if self.PARAM_TYPE <> "":
+            self.TYPE = self.PARAM_TYPE
         dialogSelection = xbmcgui.Dialog()
         Edit_Selection = dialogSelection.select( __language__(32007), self.modeselect ) 
         if Edit_Selection == -1 :
