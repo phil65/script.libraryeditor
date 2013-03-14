@@ -118,7 +118,7 @@ class Main:
             self._AddToList( xbmc.getLocalizedString(515),"album_genre" )
             self._AddToList( xbmc.getLocalizedString(21895),"themes" )
          #   self._AddToList( xbmc.getLocalizedString(515),"type" )
-          #  self._AddToList( xbmc.getLocalizedString(515),"albumlabel" )
+            self._AddToList( xbmc.getLocalizedString(21899),"albumlabel" )
             self._AddToList( xbmc.getLocalizedString(21821),"album_description" )
             self._AddToList( xbmc.getLocalizedString(563),"rating" )
         elif xbmc.getCondVisibility('Container.Content(songs)'):
@@ -193,6 +193,8 @@ class Main:
             self._edit_db_array(xbmc.getInfoLabel('ListItem.Artist'),self.TYPE,"artist")
         elif self.identifierlist[Edit_Selection] == "str_artist" :
             self._edit_db_string(xbmc.getInfoLabel('ListItem.Artist'),self.TYPE,"artist")
+        elif self.identifierlist[Edit_Selection] == "albumlabel" :
+            self._edit_db_string(xbmc.getInfoLabel('ListItem.Property(Album_Label)'),self.TYPE,"albumlabel")
         elif self.identifierlist[Edit_Selection] == "album" :
             self._edit_db_string(xbmc.getInfoLabel('ListItem.Album'),self.TYPE,"album")
         elif self.identifierlist[Edit_Selection] == "tracknumber" :             #TrackNumber (needs checking)
