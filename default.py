@@ -1,6 +1,7 @@
 import sys, time
 import xbmc, xbmcgui, xbmcaddon
 import json
+import time
 
 __addon__        = xbmcaddon.Addon()
 __addonid__      = __addon__.getAddonInfo('id')
@@ -96,7 +97,7 @@ class Main:
             self._AddToList( xbmc.getLocalizedString(20074),"mpaa" )
             self._AddToList( xbmc.getLocalizedString(567),"playcount" )
             self._AddToList( xbmc.getLocalizedString(563),"rating" )
-            self._AddToList( xbmc.getLocalizedString(20416),"firstaired" )
+     #       self._AddToList( xbmc.getLocalizedString(20416),"firstaired" )
     #        self._AddToList( xbmc.getLocalizedString(20416),"title" )
             self._AddToList( xbmc.getLocalizedString(20373),"season" )
             self._AddToList( xbmc.getLocalizedString(20359),"episode" )
@@ -104,7 +105,7 @@ class Main:
     #        self._AddToList( xbmc.getLocalizedString(20416),"title" )
         elif xbmc.getCondVisibility('Container.Content(artists)'):
             self.TYPE = "Artist"
-            self._AddToList( xbmc.getLocalizedString(557),"str_artist" )
+   #         self._AddToList( xbmc.getLocalizedString(557),"str_artist" )
             self._AddToList( xbmc.getLocalizedString(515),"artist_genre" )
             self._AddToList( xbmc.getLocalizedString(21893),"born" )
             self._AddToList( xbmc.getLocalizedString(21894),"formed" )
@@ -117,8 +118,8 @@ class Main:
             self._AddToList( xbmc.getLocalizedString(21892),"instruments" )
         elif xbmc.getCondVisibility('Container.Content(albums)'):
             self.TYPE = "Album"
-            self._AddToList( xbmc.getLocalizedString(369),"title" )
-            self._AddToList( xbmc.getLocalizedString(557),"arr_artist" )
+     #       self._AddToList( xbmc.getLocalizedString(369),"title" )
+    #        self._AddToList( xbmc.getLocalizedString(557),"arr_artist" )
             self._AddToList( xbmc.getLocalizedString(345),"year" )
             self._AddToList( xbmc.getLocalizedString(175),"album_mood" )
             self._AddToList( xbmc.getLocalizedString(176),"album_style" )
@@ -272,6 +273,12 @@ class Main:
 
     def _edit_db_string( self,preset,type,label ):
         InputLabel = self._set_string(preset)
+        try:
+            conv=time.strptime(InputLabel,"%d/%m/%Y")
+          #  InputLabel = Time.strftime('%Y-%m-%d')
+            InputLabel = time.strftime("%Y-%m-%d",conv)
+        except Exception:
+            sys.exc_clear()        
         if InputLabel <> "":
             if ((type == "Song") or (type == "Album") or (type == "Artist")):
                 xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "AudioLibrary.Set%sDetails", "params": { "%s": "%s", "%sid":%s }}' % (type,label,InputLabel,type.lower(),self.DBID))
