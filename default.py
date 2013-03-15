@@ -1,4 +1,4 @@
-import sys, time
+import sys, time, os
 import xbmc, xbmcgui, xbmcaddon
 import json
 import time
@@ -140,6 +140,7 @@ class Main:
             self._AddToList( xbmc.getLocalizedString(569),"comment" )
             self._AddToList( xbmc.getLocalizedString(427),"disc" )
             self._AddToList( xbmc.getLocalizedString(554),"Track" )
+            self._AddToList( "Delete File","delete" )
         dialogSelection = xbmcgui.Dialog()
         self.Edit_Selection = dialogSelection.select( __language__(32007), self.modeselect )
         if self.Edit_Selection == -1:
@@ -242,7 +243,8 @@ class Main:
             self._edit_db_array(xbmc.getInfoLabel('ListItem.Property(Artist_Instrument)'),self.TYPE,"instrument")
         elif actionstring == "themes" :
             self._edit_db_array(xbmc.getInfoLabel('ListItem.Property(Album_Theme)'),self.TYPE,"theme")
-            
+        elif actionstring == "delete" :
+            os.remove(xbmc.getInfoLabel('ListItem.FilenameAndPath'))
     def _set_string( self,preset ):
         keyboard = xbmc.Keyboard(preset)
         keyboard.doModal()
