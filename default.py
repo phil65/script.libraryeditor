@@ -244,48 +244,48 @@ class Main:
         elif actionstring == "themes" :
             self._edit_db_array(xbmc.getInfoLabel('ListItem.Property(Album_Theme)'),self.TYPE,"theme")
         elif actionstring == "delete" :
-            os.remove(xbmc.getInfoLabel('ListItem.FilenameAndPath'))
-    def _set_string( self,preset ):
-        keyboard = xbmc.Keyboard(preset)
-        keyboard.doModal()
-        if (keyboard.isConfirmed()):
-            return keyboard.getText()
-        else:
-            return ""
+            os.unlink(xbmc.getInfoLabel('ListItem.FilenameAndPath'))
             
     def _AddToList( self, Label, identifier ):
         self.modeselect.append(Label)
         self.identifierlist.append(identifier)    
         
     def _edit_db_array( self,preset,type,label ):
-        Input = self._set_string(preset)
-        string_array=json.dumps(Input.split( ' / ' ))
-        if ((type == "Song") or (type == "Album") or (type == "Artist")):
-            xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "AudioLibrary.Set%sDetails", "params": { "%s": %s, "%sid":%s }}' % (type,label,string_array,type.lower(),self.DBID))
+        keyboard = xbmc.Keyboard(preset)
+        keyboard.doModal()
+        if (keyboard.isConfirmed()):
+            string_array=json.dumps(keyboard.getText().split( ' / ' ))
+            if ((type == "Song") or (type == "Album") or (type == "Artist")):
+                xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "AudioLibrary.Set%sDetails", "params": { "%s": %s, "%sid":%s }}' % (type,label,string_array,type.lower(),self.DBID))
+            else:
+                xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.Set%sDetails", "params": { "%s": %s, "%sid":%s }}' % (type,label,string_array,type.lower(),self.DBID))
         else:
-            xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.Set%sDetails", "params": { "%s": %s, "%sid":%s }}' % (type,label,string_array,type.lower(),self.DBID))
+            return ""
 
     def _edit_db_integer( self,type,label ):
         InputLabel = xbmcgui.Dialog().numeric(0, xbmc.getLocalizedString(16028))
-        if InputLabel <> "":
-            if ((type == "Song") or (type == "Album") or (type == "Artist")):
-                xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "AudioLibrary.Set%sDetails", "params": { "%s": %s, "%sid":%s }}' % (type,label,InputLabel,type.lower(),self.DBID))
-            else:
-                xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.Set%sDetails", "params": { "%s": %s, "%sid":%s }}' % (type,label,InputLabel,type.lower(),self.DBID))
+        if ((type == "Song") or (type == "Album") or (type == "Artist")):
+            xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "AudioLibrary.Set%sDetails", "params": { "%s": %s, "%sid":%s }}' % (type,label,InputLabel,type.lower(),self.DBID))
+        else:
+            xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.Set%sDetails", "params": { "%s": %s, "%sid":%s }}' % (type,label,InputLabel,type.lower(),self.DBID))
 
     def _edit_db_string( self,preset,type,label ):
-        InputLabel = self._set_string(preset)
-        try:
-            conv=time.strptime(InputLabel,"%d/%m/%Y")
-          #  InputLabel = Time.strftime('%Y-%m-%d')
-            InputLabel = time.strftime("%Y-%m-%d",conv)
-        except Exception:
-            sys.exc_clear()        
-        if InputLabel <> "":
+        keyboard = xbmc.Keyboard(preset)
+        keyboard.doModal()
+        if (keyboard.isConfirmed()):
+            try:
+                InputLabel=keyboard.getText()
+                conv=time.strptime(InputLabel,"%d/%m/%Y")
+              #  InputLabel = Time.strftime('%Y-%m-%d')
+                InputLabel = time.strftime("%Y-%m-%d",conv)
+            except Exception:
+                sys.exc_clear()
             if ((type == "Song") or (type == "Album") or (type == "Artist")):
                 xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "AudioLibrary.Set%sDetails", "params": { "%s": "%s", "%sid":%s }}' % (type,label,InputLabel,type.lower(),self.DBID))
             else:
                 xbmc.executeJSONRPC('{"jsonrpc": "2.0", "id": 1, "method": "VideoLibrary.Set%sDetails", "params": { "%s": "%s", "%sid":%s }}' % (type,label,InputLabel,type.lower(),self.DBID))
+        else:
+            return ""
                 
 if ( __name__ == "__main__" ):
     Main()
